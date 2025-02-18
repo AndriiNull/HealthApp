@@ -1,0 +1,154 @@
+.appointment-container {
+  max-width: 480px;
+  margin: 40px auto;
+  padding: 25px;
+  background: #ffffff;
+  box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  font-family: 'Arial', sans-serif;
+}
+
+/* Step container */
+.step {
+  text-align: center;
+  padding: 20px;
+}
+
+/* Typography */
+h2 {
+  font-size: 24px;
+  color: #222;
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+p {
+  font-size: 16px;
+  color: #444;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* Form Fields */
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Buttons */
+button {
+  padding: 12px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  display: inline-block;
+  margin: 8px;
+  min-width: 120px;
+}
+
+  /* Primary Buttons */
+  button.mat-primary {
+    background-color: #007bff;
+    color: #fff;
+  }
+
+    button.mat-primary:hover {
+      background-color: #0056b3;
+    }
+
+  /* Warning Buttons */
+  button.mat-warn {
+    background-color: #ff3d00;
+    color: white;
+  }
+
+    button.mat-warn:hover {
+      background-color: #c62828;
+    }
+
+  /* Disabled Buttons */
+  button:disabled {
+    background-color: #b0b0b0;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  /* Time Slot Buttons */
+  button.mat-accent {
+    background-color: #28a745;
+    color: white;
+    margin: 5px;
+    padding: 10px 16px;
+    border-radius: 6px;
+  }
+
+    button.mat-accent:hover {
+      background-color: #218838;
+    }
+
+/* Selected Time Slot */
+.selected-slot {
+  background-color: #ffc107 !important;
+  color: #333 !important;
+  font-weight: bold;
+}
+
+/* Dropdown and Datepicker Fixes */
+.mat-select-panel, .mat-datepicker-content {
+  background-color: #ffffff !important;
+  color: #000 !important;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+}
+
+/* Dropdown options */
+.mat-option {
+  background-color: #ffffff !important;
+  color: #000 !important;
+}
+
+  /* Hover effect for dropdown options */
+  .mat-option:hover {
+    background-color: #f5f5f5 !important;
+  }
+
+  /* Selected option */
+  .mat-option.mat-selected {
+    background-color: #007bff !important;
+    color: white !important;
+  }
+
+/* Datepicker input field */
+.mat-form-field-appearance-fill .mat-form-field-infix {
+  background-color: #ffffff !important;
+}
+
+/* Calendar popup */
+.mat-calendar {
+  background-color: #ffffff !important;
+  color: #000 !important;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .appointment-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px 14px;
+  }
+}

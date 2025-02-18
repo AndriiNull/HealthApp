@@ -1,0 +1,22 @@
+.app-container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden; /* Prevents unwanted scrollbars */
+}
+
+.main-content {
+  flex-grow: 1;
+  transition: margin-left 0.3s ease-in-out;
+  padding: 20px;
+  margin-left: 200px; /* Normal width when sidebar is expanded */
+}
+
+/* When Sidebar is Collapsed */
+.sidebar-collapsed .main-content {
+  margin-left: 50px;
+}
+
+
+.sidebar-expanded .main-content {
+  margin-left: 200px;
+}

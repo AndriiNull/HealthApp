@@ -1,0 +1,23 @@
+<div class="auth-container">
+  <h2>Register</h2>
+
+  <form (ngSubmit)="register()">
+    <input type="text" placeholder="First Name" [(ngModel)]="name" name="name" required />
+    <input type="text" placeholder="Last Name" [(ngModel)]="surname" name="surname" required />
+    <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
+    <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required />
+
+    <mat-form-field appearance="fill">
+      <mat-label>Birthdate</mat-label>
+      <input matInput [matDatepicker]="picker" [(ngModel)]="birthdate" name="birthdate" required>
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker touchUi="false"></mat-datepicker>
+    </mat-form-field>
+
+    <button type="submit">Register</button>
+  </form>
+
+  <p *ngIf="errorMessage" class="error">{{ errorMessage }}</p>
+
+  <button class="toggle-btn" (click)="goToLogin()">Already have an account? Login</button>
+</div>

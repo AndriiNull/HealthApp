@@ -1,0 +1,92 @@
+<h2>Doctor's Timetable</h2>
+
+<label>Select Date: </label>
+<input type="date" [(ngModel)]="selectedDate" (change)="loadAppointments()" />
+
+<table class="appointments-table">
+  <tr>
+    <th>Time</th>
+    <th>Patient</th>
+    <th>Actions</th>
+  </tr>
+
+  <tr *ngFor="let appointment of appointments">
+    <td>{{ appointment.appointmentDate | date:'shortTime' }}</td>
+    <td>{{ appointment.patientName }}</td>
+    <td>
+      <button (click)="toggleAppointmentDetails(appointment.id, appointment.issueId || 0)">
+        📂 Toggle Details
+      </button>
+    </td>
+  </tr>
+</table>
+
+<ng-container *ngFor="let appointment of appointments">
+  <tr *ngIf="expandedAppointmentId === appointment.id">
+    <td colspan="3">
+      <h3>Issue Details</h3>
+      <p><strong>Title:</strong> {{ patientIssues[appointment.id]?.title }}</p>
+      <p><strong>Status:</strong> {{ patientIssues[appointment.id]?.status }}</p>
+
+      <!-- ✅ TABS for Recommendations and Analysis -->
+      <div class="tabs">
+        <button (click)="activeTab = 'recommendations'" [class.active]="activeTab === 'recommendations'">Recommendations</button>
+        <button (click)="activeTab = 'analysis'" [class.active]="activeTab === 'analysis'">Analysis</button>
+      </div>
+
+      <!-- ✅ Recommendations Section -->
+      <div *ngIf="activeTab === 'recommendations'">
+        <h3>Previous Recommendations</h3>
+        <ul>
+          <li *ngFor="let rec of patientIssues[appointment.id]?.recommendations">
+            {{ rec.text }} (by {{ rec.doctorName }}, {{ rec.createdAt | date:'short' }})
+          </li>
+        </ul>
+
+        <h3>Add Recommendation</h3>
+        <input type="text" [(ngModel)]="newRecommendationText" placeholder="Enter recommendation..." />
+        <button (click)="addRecommendation(appointment.issueId)">➕ Add</button>
+      </div>
+
+      <!-- ✅ Analysis Section -->
+      <div *ngIf="activeTab === 'analysis'">
+        <h3>Previous Analyses</h3>
+
+        <ul>
+          <li *ngFor="let analysis of issueAnalysis[appointment.issueId]">
+            <strong>{{ analysis.category.name }}:</strong> {{ analysis.value }} (Created: {{ analysis.createdAt | date:'short' }})
+          </li>
+        </ul>
+
+        <h3>Add Analysis</h3>
+
+        <div class="analysis-form">
+          <label for="category">Category:</label>
+          <select id="category" [(ngModel)]="selectedCategory">
+            <option *ngFor="let category of categories" [value]="category.id">
+              {{ category.name }}
+            </option>
+          </select>
+
+          <input type="text" [(ngModel)]="newAnalysisText" placeholder="Enter analysis result..." />
+          <button (click)="addAnalysis(appointment.issueId)">📊 Add</button>
+        </div>
+
+        <!-- ✅ Expandable "Add Category" Section -->
+        <div class="category-toggle" (click)="showAddCategory = !showAddCategory">
+          <span *ngIf="!showAddCategory">➕ Add Category</span>
+          <span *ngIf="showAddCategory">➖ Hide</span>
+        </div>
+
+        <div class="add-category-section" [class.active]="showAddCategory">
+          <h3>Create New Category</h3>
+          <div class="category-form">
+            <input type="text" [(ngModel)]="newCategoryName" placeholder="Category Name" />
+            <input type="text" [(ngModel)]="newCategoryReference" placeholder="Reference Value" />
+            <button (click)="addCategory()">✅ Save</button>
+          </div>
+        </div>
+      </div>
+    </td>
+  </tr>
+</ng-container>

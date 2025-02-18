@@ -1,0 +1,36 @@
+<div class="issues-container">
+  <h2>User Issues</h2>
+
+  <table mat-table [dataSource]="issues" class="mat-elevation-z8">
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Issue Description </th>
+      <td mat-cell *matCellDef="let issue">
+        {{ issue.description || 'No Description Available' }}
+        <button mat-button (click)="toggleIssueDetails(issue.id)">
+          {{ expandedIssueId === issue.id ? 'Hide Details' : 'View Details' }}
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['description']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['description'];"></tr>
+  </table>
+
+  <div *ngIf="expandedIssueId">
+    <h3>Details for Issue #{{ expandedIssueId }}</h3>
+
+    <h4>Recommendations</h4>
+    <ul>
+      <li *ngFor="let recommendation of recommendations[expandedIssueId]">
+        {{ recommendation.text }}
+      </li>
+    </ul>
+
+    <h4>Analysis</h4>
+    <ul>
+      <li *ngFor="let analysis of analysis[expandedIssueId]">
+        {{ analysis.value }} (Category: {{ analysis.categoryId }})
+      </li>
+    </ul>
+  </div>
+</div>

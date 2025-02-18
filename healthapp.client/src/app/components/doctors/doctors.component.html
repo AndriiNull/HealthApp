@@ -1,0 +1,40 @@
+<div class="doctor-page-container">
+  <!-- 🔍 Search Bar & Dropdown -->
+  <div class="search-container">
+    <input type="text" [(ngModel)]="searchQuery" (input)="filterDoctors()" placeholder="🔍 Search doctors..." class="search-input">
+  </div>
+
+  <!-- 🏥 Category Filter Dropdown -->
+  <div class="filter-container">
+    <select [(ngModel)]="selectedCategory" (change)="filterDoctors()" class="category-dropdown">
+      <option value="">All Categories</option>
+      <option *ngFor="let category of uniqueCategories" [value]="category">
+        {{ category }}
+      </option>
+    </select>
+  </div>
+
+  <!-- 👨‍⚕️ Doctor Cards -->
+  <div class="doctor-cards-container">
+    <div *ngFor="let doctor of filteredDoctors" class="doctor-card">
+      <div class="doctor-details">
+        <h3>{{ doctor.name }} {{ doctor.surname }}</h3>
+
+        <!-- 📜 Active Licenses -->
+        <p *ngIf="doctor.activeLicenses.length > 0">
+          <strong>📜 Active Licenses:</strong>
+          <span *ngFor="let license of doctor.activeLicenses; let last = last">
+            {{ license.practiceName }} (Exp: {{ license.expirationDate | date:'MMM d, yyyy' }})<span *ngIf="!last">, </span>
+          </span>
+        </p>
+
+        <p *ngIf="doctor.activeLicenses.length === 0">❌ No active licenses</p>
+
+        <!-- 📅 Next Available Slot Button -->
+        <button class="next-slot-btn">
+          📅 Next Slot: {{ doctor.nextAvailableSlot | date:'h:mm a' }}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

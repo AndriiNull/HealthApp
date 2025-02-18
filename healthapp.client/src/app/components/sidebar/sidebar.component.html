@@ -1,0 +1,28 @@
+<div class="sidebar" [ngClass]="{ 'collapsed': isCollapsed }">
+  <button class="toggle-btn" (click)="toggleSidebar()">☰</button>
+
+  <ul>
+    <li *ngFor="let item of menuItems">
+      <!-- ✅ Show "Patients" tab only if user is a Doctor -->
+      <ng-container *ngIf="!item.requiresDoctor || isDoctor()">
+        <a [routerLink]="item.link" class="sidebar-link">
+          <span *ngIf="!isCollapsed">{{ item.label }}</span>
+        </a>
+      </ng-container>
+    </li>
+
+    <!-- Show Login button if user is NOT logged in -->
+    <li *ngIf="!isLoggedIn()">
+      <a routerLink="/login" class="sidebar-link">
+        <span *ngIf="!isCollapsed">Login</span>
+      </a>
+    </li>
+
+    <!-- Show Logout button if user is logged in -->
+    <li *ngIf="isLoggedIn()">
+      <button (click)="logout()" class="sidebar-link">
+        <span *ngIf="!isCollapsed">Logout</span>
+      </button>
+    </li>
+  </ul>
+</div>

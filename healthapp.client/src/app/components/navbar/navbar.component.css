@@ -1,0 +1,39 @@
+/* Navbar container */
+.navbar {
+  width: calc(100% - 250px);
+  height: 60px;
+  background-color: #2980B9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 250px;
+  color: white;
+  font-size: 18px;
+  transition: left 0.3s, width 0.3s;
+}
+
+/* Adjust when sidebar is collapsed */
+.sidebar.collapsed + .navbar {
+  left: 60px;
+  width: calc(100% - 60px);
+}
+
+/* Navbar links */
+.navbar .nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+  .navbar .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: opacity 0.3s;
+  }
+
+    .navbar .nav-links a:hover {
+      opacity: 0.8;
+    }

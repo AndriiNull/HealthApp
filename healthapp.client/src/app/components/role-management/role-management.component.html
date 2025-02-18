@@ -1,0 +1,47 @@
+<div class="role-management-container">
+  <mat-card class="form-card">
+    <h2>🎯 Role Management</h2>
+
+    <form [formGroup]="roleForm" (ngSubmit)="assignRole()">
+      <mat-form-field appearance="outline">
+        <mat-label>Select User</mat-label>
+        <mat-select formControlName="personId">
+          <mat-option *ngFor="let user of users" [value]="user.id">
+            {{ user.email }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Select Role</mat-label>
+        <mat-select formControlName="role">
+          <mat-option *ngFor="let role of roles" [value]="role">
+            {{ role }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="roleForm.invalid">
+        ✅ Assign Role
+      </button>
+    </form>
+  </mat-card>
+
+  <mat-card class="table-card">
+    <h3>📋 Users & Their Roles</h3>
+    <table mat-table [dataSource]="users" class="mat-elevation-z8">
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>Email</th>
+        <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef>Roles</th>
+        <td mat-cell *matCellDef="let user">{{ user.role }}</td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="['email', 'role']"></tr>
+      <tr mat-row *matRowDef="let row; columns: ['email', 'role'];"></tr>
+    </table>
+  </mat-card>
+</div>

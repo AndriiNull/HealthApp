@@ -1,0 +1,86 @@
+/* Register Component Styling */
+.auth-container {
+  max-width: 400px;
+  margin: 50px auto;
+  padding: 30px;
+  text-align: center;
+  background: white;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  border-radius: 12px;
+  font-family: 'Arial', sans-serif;
+  min-height: 500px;
+}
+
+input, mat-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+mat-form-field {
+  display: block;
+  text-align: left;
+  position: relative;
+  z-index: 2;
+}
+
+/* Ensure Material Datepicker popup is fully white */ 
+.cdk-overlay-pane {
+  background-color: white !important;
+  opacity: 1 !important;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Ensure Datepicker content is fully opaque */
+.mat-datepicker-content {
+  background-color: white !important;
+  color: black !important;
+  border-radius: 10px;
+  opacity: 1 !important;
+}
+
+/* Make sure selected date inside the Datepicker is visible */
+.mat-calendar-body-selected {
+  background-color: #007b51 !important;
+  color: white !important;
+}
+
+/* Ensure Datepicker cells do not have borders */
+.mat-calendar-body-cell-content {
+  border: none !important;
+}
+
+/* Ensure the header of the Datepicker is white */
+.mat-calendar-header {
+  background-color: white !important;
+  color: black !important;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+.toggle-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  font-size: 14px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+  .toggle-btn:hover {
+    color: #0056b3;
+  }

@@ -1,0 +1,190 @@
+/* 🎨 General Page Styling */
+h2 {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 24px;
+  margin-bottom: 15px;
+}
+
+/* 🗓️ Date Picker Styling */
+label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+input[type="date"] {
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
+
+/* 📅 Table Styling */
+.appointments-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+  .appointments-table th, .appointments-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+  }
+
+  .appointments-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+  }
+
+  .appointments-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+
+  .appointments-table tr:hover {
+    background-color: #f1f1f1;
+  }
+
+/* 🔘 Buttons */
+button {
+  background-color: #3498db;
+  color: white;
+  padding: 6px 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.3s ease;
+}
+
+  button:hover {
+    background-color: #2980b9;
+  }
+
+  button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  /* 📂 Toggle Button */
+  button.toggle-btn {
+    background-color: #f39c12;
+    padding: 5px 10px;
+  }
+
+    button.toggle-btn:hover {
+      background-color: #e67e22;
+    }
+
+/* 📝 Recommendation & Analysis Input */
+input[type="text"] {
+  padding: 8px;
+  font-size: 14px;
+  width: 80%;
+  margin-right: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* 📋 Recommendations List */
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+  ul li {
+    background-color: #ecf0f1;
+    padding: 8px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+  }
+
+/* 🌟 Highlight Doctor Names */
+strong {
+  color: #2c3e50;
+}
+
+/* 🗂️ Responsive Design */
+@media (max-width: 768px) {
+  .appointments-table th, .appointments-table td {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  input[type="text"], input[type="date"] {
+    font-size: 12px;
+  }
+}
+
+/* 🗃️ Analysis Form */
+.analysis-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+  .analysis-form select {
+    width: 200px;
+    padding: 6px;
+    font-size: 14px;
+  }
+
+  .analysis-form input {
+    flex: 1;
+    padding: 6px;
+    font-size: 14px;
+  }
+
+  .analysis-form button {
+    padding: 6px 12px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+    .analysis-form button:hover {
+      background-color: #0056b3;
+    }
+
+/* 🏗️ Category Toggle Section */
+.category-toggle {
+  cursor: pointer;
+  font-weight: bold;
+  color: #3498db;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+  .category-toggle:hover {
+    color: #2980b9;
+  }
+
+/* Hidden by default */
+.add-category-section {
+  display: none;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+  /* Show when expanded */
+  .add-category-section.active {
+    display: block;
+  }
